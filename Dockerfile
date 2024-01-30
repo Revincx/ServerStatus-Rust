@@ -15,7 +15,8 @@ COPY --from=builder /app/config.toml /app/config.toml
 COPY --from=builder /app/target/release/stat_server /app/stat_server
 COPY --from=builder /app/start.sh /app/start.sh
 RUN apt update && \
-    apt install -y curl
+    apt install -y curl && \
+    chmod +x /app/start.sh
 
 WORKDIR /app
 EXPOSE 8080 9394
